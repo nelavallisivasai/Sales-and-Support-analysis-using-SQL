@@ -42,7 +42,7 @@ SELECT avg_amt('Mukesh');
 DELIMITER //
 CREATE PROCEDURE cust_detail(IN grade_param char)
 BEGIN
-	SELECT * FROM customer
+    SELECT * FROM customer
     WHERE grade = grade_param;
 END //
 
