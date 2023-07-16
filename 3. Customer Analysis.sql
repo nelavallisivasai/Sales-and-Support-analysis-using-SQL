@@ -24,13 +24,17 @@ JOIN
 -- Q. Find the name of the customer who has the maximum outstanding amount from every country. 
 SELECT cust_name
 FROM
-(SELECT cust_name, cust_country, MAX(outstanding_amt)
-FROM customer
-GROUP BY cust_country) AS temp;
+  (SELECT cust_name, cust_country, MAX(outstanding_amt)
+   FROM customer
+   GROUP BY cust_country
+  ) AS temp;
 
 -- Q. Write a SQL query to calculate the percentage of customers in each grade category (0 to 3). 
 SELECT grade, (count(*)/t_cust.total_cust)*100 AS per_cust
-FROM customer JOIN
-(SELECT COUNT(*) as total_cust FROM customer) as t_cust
+FROM customer 
+JOIN
+  (SELECT COUNT(*) as total_cust 
+   FROM customer
+  ) AS t_cust
 GROUP BY grade;
 
