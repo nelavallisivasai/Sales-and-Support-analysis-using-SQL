@@ -2,7 +2,8 @@
 -- Q. Company wants to provide a performance bonus to their best agents based on the maximum order amount. 
 -- Find the top 5 agents eligible for it.
 SELECT agent_name
-FROM agents JOIN orders
+FROM agents 
+JOIN orders
 ON agents.agent_code = orders.agent_code
 GROUP BY orders.agent_code
 ORDER BY SUM(ord_amount) DESC
@@ -13,10 +14,12 @@ limit 5
 -- they have handled. Write a SQL query to rank agents based on the total number of orders 
 -- they have processed. Display agent_name, total_orders, and their respective ranking.
 
-SELECT agents.agent_name, COUNT(orders.ord_num) AS total_orders,
-ROW_NUMBER() OVER (ORDER BY COUNT(orders.ord_num) DESC) AS ranking
+SELECT agents.agent_name, 
+       COUNT(orders.ord_num) AS total_orders,
+       ROW_NUMBER() OVER (ORDER BY COUNT(orders.ord_num) DESC) AS ranking
 FROM agents
-JOIN orders ON agents.agent_code = orders.agent_code
+JOIN orders 
+ON agents.agent_code = orders.agent_code
 GROUP BY agents.agent_name
 ORDER BY total_orders DESC;
 
