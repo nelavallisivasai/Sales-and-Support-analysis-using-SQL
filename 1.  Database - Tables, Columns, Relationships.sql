@@ -24,7 +24,7 @@ DROP country;
 -- Replacing incorrect phone numbers with blank.
 UPDATE customer
 SET phone_no = ''
-WHERE phone_no NOT REGEXP '^[0-9-]{7,12}$';
+WHERE phone_no NOT REGEXP '^[0-9-]$';
 
 -- Q. Analyse the data types of the columns in each table to ensure they are appropriate for the stored data.
 -- Changing datatype of ord_num from decimal(6,0) to varchar(6)
@@ -40,11 +40,10 @@ MODIFY COLUMN grade char;
 -- Adding primary key to avoid dupllicates.
 ALTER TABLE customer 
 ADD PRIMARY KEY (`CUST_CODE`);
-;
+
 -- Adding primary key to avoid dupllicates.
 ALTER TABLE orders 
 ADD PRIMARY KEY (`ORD_NUM`);
-;
 
 
 
