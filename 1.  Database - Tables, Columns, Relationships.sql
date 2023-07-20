@@ -21,7 +21,7 @@ WHERE TABLE_SCHEMA = 'interview';
 ALTER TABLE agents 
 DROP country;
 
--- Replacing incorrect phone numbers with blank.
+-- Replacing incorrect phone numbers with blank as NOT NULL constraint is there by default.
 UPDATE customer
 SET phone_no = ''
 WHERE phone_no NOT REGEXP '^[0-9-]$';
@@ -37,6 +37,7 @@ MODIFY COLUMN grade char;
 
 -- Q. Identify any duplicate records within the tables and develop a strategy for handling them.
 
+-- No duplicates
 -- Adding primary key to avoid dupllicates.
 ALTER TABLE customer 
 ADD PRIMARY KEY (`CUST_CODE`);
